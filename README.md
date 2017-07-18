@@ -1,7 +1,7 @@
 ansible-role-filebeat-postfix-bounce
 =========
 
-Install and configure filebeat for sending bounce logs to logstash
+Install and configure filebeat for sending bounce logs to a logstash (configured with this [role](https://github.com/web-education/ansible-role-logstash-postfix-bounce))
 
 Requirements
 ------------
