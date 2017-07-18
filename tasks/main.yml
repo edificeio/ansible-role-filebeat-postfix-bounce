@@ -1,0 +1,29 @@
+---
+- name: Installing apt-transport-https
+  apt:
+    name: apt-transport-https
+    state: present
+
+- name: Adding elastic.co apt key
+  apt_key: 
+    url: 'https://artifacts.elastic.co/GPG-KEY-elasticsearch'
+    state: present
+
+- name: Adding elastic.co apt repository
+  apt_repository:
+    repo: 'deb https://artifacts.elastic.co/packages/5.x/apt stable main'
+    filename: 'elastic-5.x.list'
+    state: present
+    update_cache: yes
+
+- name: Installing filebeat
+  apt:
+    name: filebeat
+    state: present
+  notify: enable filebeat
+
+- name: Setting filebeat.yml configuration file
+  template:
+    src: filebeat.j2
+    dest: /etc/filebeat/filebeat.yml
+  notify: restart filebeat

@@ -1,0 +1,10 @@
+- input_type: log
+  document_type: syslog
+  paths:
+   - /var/log/mail.info
+  include_lines: ['status=bounced']
+
+tags: ["postfix-bounce"]
+
+output.logstash:
+  hosts: ["{{logstash_host}}:{{logstash_port}}"]
