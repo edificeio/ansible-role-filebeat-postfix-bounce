@@ -1,8 +1,9 @@
-- input_type: log
-  document_type: syslog
-  paths:
-   - /var/log/mail.info
-  include_lines: ['status=bounced']
+filebeat.prospectors:
+  - input_type: log
+    document_type: syslog
+    paths:
+     - /var/log/mail.info
+    include_lines: ['status=bounced']
 
 tags: ["postfix-bounce"]
 
